@@ -55,10 +55,10 @@ namespace NeoMovies
         {
             Console.WriteLine("*** Actors of \"Cloud Atlas\" ***");
 
-            // MATCH (:Movie {title: "Cloud Atlas"})<-[:ACTED_IN]->(person) RETURN person
+            // MATCH (:Movie {title: "Cloud Atlas"})<-[:ACTED_IN]-(person) RETURN person
 
             var query = client.Cypher
-                .Match("(:Movie {title: \"Cloud Atlas\"})<-[:ACTED_IN]->(person)")
+                .Match("(:Movie {title: \"Cloud Atlas\"})<-[:ACTED_IN]-(person)")
                 .Return(person => person.As<Person>())
                 .OrderBy("person.born");
 
